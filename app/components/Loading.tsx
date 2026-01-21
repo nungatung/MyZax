@@ -19,7 +19,7 @@ export default function Loading() {
       </div>
       
       <p className="mt-8 text-[10px] font-black uppercase tracking-[0.3em] text-gray-300">
-        Preparing your order....   
+        Preparing....   
       </p>
     </div>
   );

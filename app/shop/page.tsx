@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import Loading from '@/app/components/Loading';
 
+
 const categories = ["All", "Foil Lids & Steam Pans", "Bathroom Products", "Napkins", "Kitchen Supplies", "Straws", "Take-Out Containers", "Cups", "Paper Towel"];
 
 export default function ShopPage() {
