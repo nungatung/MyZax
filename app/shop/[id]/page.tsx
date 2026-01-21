@@ -128,7 +128,7 @@ export default function ProductPage() {
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-4">
-                            <div className={`flex items-center border-2 border-gray-200 rounded-2xl bg-white h-16 w-full sm:w-auto ${product.stock_level <= 0 ? 'opacity-50 grayscale' : ''}`}>
+                            <div className={`flex items-center justify-center border-2 border-gray-200 rounded-2xl bg-white h-16 w-full sm:w-auto ${product.stock_level <= 0 ? 'opacity-50 grayscale' : ''}`}>
                                 <button
                                     disabled={product.stock_level <= 0}
                                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
