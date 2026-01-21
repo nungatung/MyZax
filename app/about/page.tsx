@@ -1,18 +1,36 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Link from 'next/link';
 import { useState } from 'react';
 import LoginModal from '../components/LoginModal';
+import Loading from '../components/Loading';
 
 
 export default function AboutPage() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Artificial brief loading for brand consistency
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setTimeout(() => setIsVisible(true), 50);
+    }, 600); 
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loading />;
+
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
 
       {/* --- HERO SECTION --- */}
+      <div className={`transition-all duration-1000 transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}>
       <section className="relative py-24 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -147,6 +165,7 @@ export default function AboutPage() {
           <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/20 rounded-full -ml-10 -mb-10"></div>
         </div>
       </section>
+      </div>
 
       {/* --- FOOTER --- */}
       <footer className="bg-zax-dark text-white pt-2 pb-8">

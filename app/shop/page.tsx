@@ -12,6 +12,7 @@ export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [maxPrice, setMaxPrice] = useState(300);
   const [loading, setLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Fetch all products from Supabase
   useEffect(() => {
@@ -21,6 +22,8 @@ export default function ShopPage() {
       if (data) setDbProducts(data);
       if (error) console.error(error);
       setLoading(false);
+
+      setTimeout(() => setIsVisible(true), 100);
     }
     fetchProducts();
   }, []);
@@ -41,6 +44,7 @@ export default function ShopPage() {
           <Navbar />
 
 
+    
     <div className="bg-white min-h-screen pb-20">
       {/* Header */}
       <div className="bg-gray-50 border-b border-gray-100 py-16 mb-12">
@@ -53,6 +57,9 @@ export default function ShopPage() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-12">
         
         {/* --- LEFT SIDEBAR: FILTERS --- */}
+        <div className={`transition-all duration-1000 transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
         <aside className="w-full lg:w-64 space-y-10">
           {/* Price Filter */}
           <div>
@@ -91,8 +98,13 @@ export default function ShopPage() {
             </div>
           </div>
         </aside>
+        </div>
+        
 
         {/* --- RIGHT SIDE: PRODUCT GRID --- */}
+        <div className={`transition-all duration-1000 transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
         <div className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
@@ -119,6 +131,8 @@ export default function ShopPage() {
         </div>
       </div>
     </div>
+    </div>
+    
 
     {/* --- FOOTER --- */}
       <footer className="bg-zax-dark text-white pt-2 pb-8">
