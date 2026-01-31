@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Loading from '@/app/components/Loading';
 
 
-const categories = ["All", "Foil Lids & Steam Pans", "Bathroom Products", "Napkins", "Kitchen Supplies", "Straws", "Take-Out Containers", "Cups", "Paper Towel"];
+const categories = ["All", "Napkins", "Take-Out Containers", "Sugar Sachets", "Foil Lids & Steam Pans", "Bathroom Products", "Kitchen Supplies", "Straws", "Cups", "Paper Towel"];
 
 export default function ShopPage() {
   const [dbProducts, setDbProducts] = useState<any[]>([]);
@@ -114,11 +114,11 @@ export default function ShopPage() {
                 <div className="aspect-square bg-gray-50 rounded-2xl overflow-hidden mb-4">
                   <img src={product.image_url} alt={product.name} className="w-full h-full object-contain p-6" />
                 </div>
-                <p className="text-[10px] font-black text-zax-green uppercase mb-1">{product.category}</p>
-                <h3 className="font-bold text-gray-900 mb-4 h-12 line-clamp-2">{product.name}</h3><br/><p className="text-xs text-gray-400 font-medium uppercase">{product.unit}</p>
+                <p className="text-[12px] font-black text-zax-green uppercase mb-1">{product.category}</p>
+                <h3 className="font-bold text-gray-900 mb-4 h-12 line-clamp-2">{product.name}</h3><br/>
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-black text-gray-900">${product.price.toFixed(2)}</span>
-                  <button className="bg-zax-dark text-white p-3 rounded-xl hover:bg-zax-green transition-colors cursor-pointer">🛒</button>
+                  <p className="text-xs text-gray-500 font-medium uppercase">{product.unit}</p>
                 </div>
               </div>
               </Link>

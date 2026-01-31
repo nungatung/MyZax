@@ -9,7 +9,7 @@ import Link from 'next/link';
 export default function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [user, setUser] = useState<any>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // Mobile menu state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const { cart, setIsCartOpen } = useCart();
   const itemCount = cart.reduce((total: number, item: any) => total + item.quantity, 0);
@@ -42,27 +42,32 @@ export default function Navbar() {
   return (
     <>
       <nav className="flex items-center justify-between px-6 md:px-12 py-6 bg-white border-b border-gray-100 sticky top-0 z-[100]">
-        {/* LOGO */}
-        <Link href="/" className="transition-transform active:scale-95">
-          <img src="/zax-hor-v3.png" alt="Zax Logo" className="h-16 md:h-20 w-64" />
+        {/* LOGO - Added hover scale to make it feel more "alive" */}
+        <Link href="/" className="transition-transform hover:scale-105 active:scale-95 duration-300">
+          <img 
+            src="/zax-hor-v3.png" 
+            alt="Zax Logo" 
+            className="h-16 md:h-20 w-auto object-contain" 
+          />
         </Link>
 
-        {/* DESKTOP LINKS */}
-        <div className="hidden md:flex items-center gap-10">
+        {/* DESKTOP LINKS - Changed text color to zax-green and increased tracking */}
+        <div className="hidden md:flex items-center gap-12">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href} 
-              className="text-[14px] font-black uppercase tracking-[0.3em] text-gray-400 hover:text-zax-green transition-colors"
+              className="group relative text-[15px] font-black uppercase tracking-[0.4em] text-zax-green transition-all"
             >
               {link.name}
+              {/* Added a subtle underline that appears on hover */}
+              <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-zax-green transition-all group-hover:w-full"></span>
             </Link>
           ))}
         </div>
 
         {/* RIGHT SIDE ACTIONS */}
         <div className="flex items-center gap-4 md:gap-8">
-          {/* CART BUTTON */}
           <button 
             onClick={() => setIsCartOpen(true)}
             className="relative p-2 transition-transform hover:scale-110 active:scale-95 cursor-pointer"
@@ -75,12 +80,11 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* USER ACTIONS (Desktop) */}
           <div className="hidden md:flex items-center gap-6">
             {user ? (
               <>
                 <Link href="/account">
-                  <span className="text-[10px] font-black uppercase tracking-tighter text-zax-green bg-[#BEE7DC] px-4 py-2 rounded-full cursor-pointer hover:bg-zax-green hover:text-white transition-colors">
+                  <span className="text-[10px] font-black uppercase tracking-tighter text-zax-green bg-[#BEE7DC] px-4 py-2 rounded-full cursor-pointer hover:bg-zax-green hover:text-white transition-colors border border-zax-green/20">
                     Hi, {user.user_metadata.full_name?.split(' ')[0] || 'Partner'}
                   </span>
                 </Link>
@@ -89,13 +93,15 @@ export default function Navbar() {
                 </button>
               </>
             ) : (
-              <button onClick={() => setIsModalOpen(true)} className="text-sm font-black uppercase tracking-widest text-gray-400 hover:text-zax-green transition-colors cursor-pointer">
+              <button 
+                onClick={() => setIsModalOpen(true)} 
+                className="text-sm font-black uppercase tracking-widest text-zax-green border-2 border-zax-green px-6 py-2 rounded-xl hover:bg-zax-green hover:text-white transition-all cursor-pointer"
+              >
                 Login
               </button>
             )}
           </div>
 
-          {/* HAMBURGER BUTTON (Mobile) */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 z-[110] cursor-pointer"
@@ -115,7 +121,7 @@ export default function Navbar() {
               key={link.name} 
               href={link.href} 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-black uppercase tracking-[0.2em] text-zax-dark"
+              className="text-2xl font-black uppercase tracking-[0.2em] text-zax-green"
             >
               {link.name}
             </Link>
@@ -126,7 +132,7 @@ export default function Navbar() {
               Account
             </Link>
           ) : (
-            <button onClick={() => { setIsModalOpen(true); setIsMobileMenuOpen(false); }} className="text-xl font-black uppercase text-zax-dark">
+            <button onClick={() => { setIsModalOpen(true); setIsMobileMenuOpen(false); }} className="text-xl font-black uppercase text-zax-green">
               Login
             </button>
           )}

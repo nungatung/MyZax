@@ -37,7 +37,7 @@ export default function ProductPage() {
                 setRelated(relatedData || []);
             }
             setLoading(false);
-            
+
             // 2. Trigger entrance after data is loaded
             setTimeout(() => setIsVisible(true), 100);
         }
@@ -59,9 +59,8 @@ export default function ProductPage() {
             </nav>
 
             {/* 3. Wrap Content in a transition container */}
-            <div className={`max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-24 pb-20 transition-all duration-1000 transform ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}>
+            <div className={`max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 lg:gap-24 pb-20 transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}>
 
                 {/* LEFT: Image Gallery */}
                 <div className="relative group">
@@ -98,7 +97,7 @@ export default function ProductPage() {
                     {/* Features list */}
                     <div className="grid grid-cols-2 gap-4 pt-8 mt-8 border-t border-gray-100">
                         {['Wholesale Price', 'Just in time delivery', 'Exceptional customer service', 'Excellent product quality'].map((text) => (
-                             <div key={text} className="flex items-center gap-3 text-[12px] font-black text-gray-400 uppercase tracking-widest">
+                            <div key={text} className="flex items-center gap-3 text-[12px] font-black text-gray-400 uppercase tracking-widest">
                                 <span className="text-zax-green text-lg">✓</span> {text}
                             </div>
                         ))}

@@ -2,11 +2,11 @@
 import React from 'react';
 
 const MOCK_REVIEWS = [
-  { id: 1, name: "Maria Rodriguez", role: "Cafe Owner", text: "The Kraft boxes are incredibly sturdy. My customers love the eco-friendly look!" },
-  { id: 2, name: "David Chen", role: "Restaurant Manager", text: "Fastest shipping I've found in the wholesale market. Zax is our go-to partner." },
-  { id: 3, name: "Sarah Jenkins", role: "Event Planner", text: "The quality of the napkins and straws is consistent every single time. 5 stars!" },
-  { id: 4, name: "Chef Mike", role: "Food Truck Owner", text: "Reliable service and great prices. It’s hard to find a supplier that actually cares." },
-  { id: 5, name: "Alex Thompson", role: "Supply Chain Director", text: "Switching to Zax saved us 15% on our monthly packaging costs. Highly recommend." },
+  { id: 1, name: "Feras", role: "Goldies Chicken Plus", text: "It's a lifesaver having a local supplier – Zax always comes through when I'm in a pinch!" },
+  { id: 2, name: " Kevin", role: "Khal's Steakhouse & Lounge", text: "Professional, friendly and on time service."},
+  { id: 3, name: "Bobby", role: "The Bourbon House Tex Mex Cantina", text: "They're all about prompt service and getting things done on time – couldn't ask for more!" },
+  { id: 4, name: "Chris", role: "The Local House", text: "Zax's personal, hands-on service is a breath of fresh air in today's world – super refreshing!" },
+  { id: 5, name: "Paul ", role: "Mighty Learners", text: "Zax is our go-to for paper products – they always come through with what we need, on time and at a great price. Helps us focus on the kiddos, not just the little cleanups and spills! 😊" },
 ];
 
 export default function Testimonials() {

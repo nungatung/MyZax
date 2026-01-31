@@ -1,8 +1,10 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
 import MostPopular from './components/MostPopular';
 import Navbar from './components/Navbar';
 import Testimonials from './components/Testimonials';
+import ScrollArrow from './components/ScrollArrow';
 
 export default function Home() {
   return (
@@ -42,21 +44,26 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 2. Content Overlay (The text stays clear and readable) */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Column: Headline */}
+       {/* 2. Content Overlay */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        {/* Empty div to take up the left column on desktop */}
+        <div className="hidden md:block"></div>
+
+        {/* This container now holds everything on the right side */}
+        <div className="space-y-12">
+
+          {/* 2. Headline (Now underneath the card) */}
           <div className="drop-shadow-sm">
-            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] text-gray-900 tracking-tighter">
+            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] text-gray-900 tracking-tighter md:text-right">
               Reliable <br />
               <span className="text-zax-green">Supplies</span> <br />
               & Services
             </h1>
           </div>
-
-          {/* Right Column: About Brief Card */}
+          
+          {/* 1. About Brief Card (Now on top) */}
           <div className="bg-white/80 backdrop-blur-lg p-10 rounded-3xl shadow-2xl border border-gray-100 relative opacity-100">
-            
             <h2 className="text-2xl font-black mb-4 text-gray-900">About Zax Reliable Services</h2>
             <p className="text-lg leading-relaxed text-gray-600">
               We are your dedicated partner for premium food service packaging 
@@ -64,7 +71,14 @@ export default function Home() {
               durable paper products, we deliver the reliability your business deserves.
             </p>
           </div>
+
+          
+
         </div>
+      </div>
+      
+
+        <ScrollArrow/>
       </section>
 
       {/* --- PRODUCT GRID --- */}
@@ -135,7 +149,7 @@ export default function Home() {
           {/* RIGHT SIDE: Large Circular Logo */}
           <div className="relative flex justify-center lg:justify-end">
             {/* Circle color matches #BEE7DC from your screenshot */}
-            <div className="w-[380px] h-[380px] md:w-[500px] md:h-[500px] bg-[#BEE7DC] rounded-full flex items-center justify-center shadow-sm relative">
+            <div className="w-[380px] h-[380px] md:w-[400px] md:h-[400px] bg-[#BEE7DC] rounded-full flex items-center justify-center shadow-sm relative">
               <img
                 src="/zax-logo.png"
                 className="w-2/3 h-auto"
