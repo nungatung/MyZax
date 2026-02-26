@@ -46,25 +46,25 @@ export default function Navbar() {
       {/* OUTER WRAPPER: Handles the centering and spacing from top */}
       <div className="fixed top-0 left-0 right-0 z-[100] flex justify-center pt-4 md:pt-6 pointer-events-none">
         
-        {/* THE PILL: Reduced 'py' to allow the logo to expand vertically */}
-        <nav className={`
-          flex items-center justify-between px-6 md:px-10 pointer-events-auto transition-all duration-500 ease-out
-          bg-zax-green/90 backdrop-blur-xl rounded-full 
-          border-2 border-white/20 shadow-[0_20px_50px_rgba(0,112,60,0.3)]
-          ${isScrolled ? 'w-[90%] md:w-[65%] py-1.5' : 'w-[95%] md:w-[85%] py-2 md:py-3'}
-        `}>
+        {/* THE PILL: Reduced mobile padding from px-6 to px-4 */}
+<nav className={`
+  flex items-center justify-between px-4 md:px-10 pointer-events-auto transition-all duration-500 ease-out
+  bg-zax-green/90 backdrop-blur-xl rounded-full 
+  border-2 border-white/20 shadow-[0_20px_50px_rgba(0,112,60,0.3)]
+  ${isScrolled ? 'w-[92%] md:w-[65%] py-1.5' : 'w-[95%] md:w-[85%] py-2 md:py-3'}
+`}>
 
-          {/* LOGO: Significant height increase for better legibility */}
-          <Link href="/" className="transition-transform hover:scale-105 active:scale-95 shrink-0">
-            <img 
-              src="/zax-hor-v3.png" 
-              alt="Zax Logo" 
-              className={`
-                object-contain brightness-0 invert transition-all duration-500
-                ${isScrolled ? 'h-14' : 'h-20 md:h-24'} 
-              `} 
-            />
-          </Link>
+  {/* LOGO: Scaled down on mobile (h-12 to h-14) to prevent horizontal overflow */}
+  <Link href="/" className="transition-transform hover:scale-105 active:scale-95 shrink-0">
+    <img 
+      src="/zax-hor-v3.png" 
+      alt="Zax Logo" 
+      className={`
+        object-contain brightness-0 invert transition-all duration-500
+        ${isScrolled ? 'h-10 md:h-14' : 'h-12 md:h-24'} 
+      `} 
+    />
+  </Link>
 
           {/* NAV LINKS: Switched to white for readability on the green background */}
           <div className="hidden md:flex items-center gap-10">
@@ -80,38 +80,22 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* ACTIONS: Icons and buttons adjusted for the dark green background */}
-          <div className="flex items-center gap-3 md:gap-6">
-            <button 
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-2.5 group hover:scale-110 transition-all duration-300 cursor-pointer rounded-xl bg-white/10 hover:bg-white/20 border border-white/10"
-              aria-label="View Cart"
-            >
-              {/* CUSTOM SHOPPING BAG SVG: Matches your 512x512 reference */}
-              <svg 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                xmlns="http://www.w3.org/2000/svg"
-                className="text-white transition-transform group-hover:-rotate-3"
-              >
-                <path 
-                  d="M8 6V5C8 2.79086 9.79086 1 12 1C14.2091 1 16 2.79086 16 5V6M5 6H19C20.1046 6 21 6.89543 21 8V19C21 21.2091 19.2091 23 17 23H7C4.79086 23 3 21.2091 3 19V8C3 6.89543 3.89543 6 5 6Z" 
-                  stroke="currentColor" 
-                  strokeWidth="2.5" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              {/* NOTIFICATION BADGE: High-contrast circle */}
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-white text-zax-green text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-zax-green shadow-lg">
-                  {itemCount}
-                </span>
-              )}
-            </button>
+          {/* ACTIONS: Reduced gap on mobile from gap-3 to gap-1.5 to save space */}
+  <div className="flex items-center gap-1.5 md:gap-6">
+    <button 
+      onClick={() => setIsCartOpen(true)}
+      className="relative p-2 group hover:scale-110 transition-all duration-300 cursor-pointer rounded-xl bg-white/10"
+      aria-label="View Cart"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
+        <path d="M8 6V5C8 2.79086 9.79086 1 12 1C14.2091 1 16 2.79086 16 5V6M5 6H19C20.1046 6 21 6.89543 21 8V19C21 21.2091 19.2091 23 17 23H7C4.79086 23 3 21.2091 3 19V8C3 6.89543 3.89543 6 5 6Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+      {itemCount > 0 && (
+        <span className="absolute -top-1 -right-1 bg-white text-zax-green text-[9px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+          {itemCount}
+        </span>
+      )}
+    </button>
 
             {user ? (
               <Link href="/account">
@@ -128,19 +112,18 @@ export default function Navbar() {
               </button>
             )}
 
-            {/* MOBILE MENU TOGGLE */}
-            <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden flex flex-col gap-1.5 p-3 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all active:scale-95"
-              aria-label="Toggle Menu"
-            >
-              {/* Bars are now white and slightly thicker (h-[3px]) for better visibility */}
-              <div className={`w-6 h-[3px] bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <div className={`w-6 h-[3px] bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-              <div className={`w-6 h-[3px] bg-white rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
-            </button>
-          </div>
-        </nav>
+            {/* MOBILE MENU TOGGLE: Scaled down slightly for extra margin */}
+    <button 
+      onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      className="md:hidden flex flex-col gap-1 p-2.5 rounded-xl bg-white/10 border border-white/20"
+      aria-label="Toggle Menu"
+    >
+      <div className={`w-5 h-[2.5px] bg-white rounded-full transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+      <div className={`w-5 h-[2.5px] bg-white rounded-full transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+      <div className={`w-5 h-[2.5px] bg-white rounded-full transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+    </button>
+  </div>
+</nav>
       </div>
 
       {/* MOBILE MENU (White Zen Variation with Staggered Entrance) */}
