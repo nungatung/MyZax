@@ -50,9 +50,10 @@ export default function ProductPage() {
     return (
         <main className="min-h-screen font-sans text-gray-800 bg-white">
             <Navbar />
+            
 
             {/* Breadcrumbs */}
-            <nav className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-8 text-[12px] font-black text-gray-400 uppercase tracking-[0.2em]">
+            <nav className="max-w-7xl mx-auto px-6 pt-40 md:pt-52 pb-8 text-[12px] font-black text-gray-400 uppercase tracking-[0.2em]">
                 <Link href="/shop" className="hover:text-zax-green transition-colors">Shop</Link>
                 <span className="mx-3 text-gray-200">/</span>
                 <span className="text-zax-dark">{product.category}</span>
