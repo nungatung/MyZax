@@ -46,7 +46,7 @@ export default function CartDrawer() {
             <span className="text-3xl font-black text-zax-dark">${cartTotal.toFixed(2)}</span>
           </div>
           <button className="w-full bg-zax-green text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-zax-dark transition-all shadow-xl active:scale-95 cursor-pointer">
-            Checkout with Stripe
+            Checkout
           </button>
           <p className="text-[10px] text-center text-gray-400 font-bold uppercase tracking-widest">Taxes and shipping calculated at checkout</p>
         </div>

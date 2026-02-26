@@ -16,7 +16,6 @@ export default function Testimonials() {
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-        <p className="text-zax-green font-black uppercase tracking-[0.3em] text-[10px] mb-3">Our Reputation</p>
         <h2 className="text-4xl md:text-5xl font-black text-zax-dark tracking-tighter">What Our Partners Say</h2>
       </div>
 

@@ -52,7 +52,7 @@ export default function ProductPage() {
             <Navbar />
 
             {/* Breadcrumbs */}
-            <nav className="max-w-7xl mx-auto px-6 py-8 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
+            <nav className="max-w-7xl mx-auto px-6 pt-28 md:pt-36 pb-8 text-[12px] font-black text-gray-400 uppercase tracking-[0.2em]">
                 <Link href="/shop" className="hover:text-zax-green transition-colors">Shop</Link>
                 <span className="mx-3 text-gray-200">/</span>
                 <span className="text-zax-dark">{product.category}</span>
@@ -149,6 +149,29 @@ export default function ProductPage() {
                             >
                                 {product.stock_level > 0 ? 'Add to Cart' : 'Currently Unavailable'}
                             </button>
+                        </div>
+
+                        {/* SMALLER QUANTITIES NUDGE */}
+                        <div className="mt-8 pt-8 border-t border-gray-200/60">
+                            <div className="flex items-start gap-4">
+                                <div className="bg-zax-green/10 p-2.5 rounded-xl">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00703C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3v8.5Z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 className="text-[11px] font-black uppercase tracking-widest text-zax-dark">Looking for smaller quantities?</h4>
+                                    <p className="text-[12px] text-gray-500 mt-1 leading-relaxed">
+                                        We offer custom break pack options to suit all your needs.
+                                    </p>
+                                    <Link
+                                        href="/contact"
+                                        className="inline-flex items-center gap-1 text-[11px] font-black uppercase tracking-wider text-zax-green mt-3 hover:gap-2 transition-all"
+                                    >
+                                        Get a Custom Quote <span>→</span>
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

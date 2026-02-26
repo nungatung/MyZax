@@ -27,6 +27,9 @@ export default function AboutPage() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
+      {/* TOP SPACER: This matches the height of your Floating Island */}
+      <div className="h-20 md:h-20 w-full" aria-hidden="true" />
+
       {/* --- HERO SECTION --- */}
       <div className={`transition-all duration-1000 transform ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'

@@ -5,87 +5,86 @@ import MostPopular from './components/MostPopular';
 import Navbar from './components/Navbar';
 import Testimonials from './components/Testimonials';
 import ScrollArrow from './components/ScrollArrow';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <main className="min-h-screen font-sans text-gray-800">
 
       {/* --- NAVBAR --- */}
-      <Navbar/>
+      <Navbar />
 
-      {/* --- PRODUCT MARQUEE HERO --- */}
-      <section className="relative h-[85vh] w-full overflow-hidden bg-white flex items-center">
-        
-        {/* 1. Background Scrolling Marquee (Faded) */}
-        <div className="absolute inset-0 z-0 flex flex-col justify-center gap-12 opacity-30 pointer-events-none">
-          
-          {/* Row 1: Images 1-7 (Moving Left) */}
-          <div className="flex w-[200%] gap-12 animate-marquee">
+      {/* --- SPLIT-SCREEN DYNAMISM HERO --- */}
+      <section className="relative h-auto md:h-[90vh] w-full overflow-hidden bg-white flex flex-col md:flex-row">
+
+        {/* LEFT SIDE: The Inventory Engine */}
+        <div
+          className="relative w-full md:w-1/2 h-[50vh] md:h-full flex flex-col justify-center gap-6 md:gap-12 overflow-hidden md:border-r md:border-gray-100 bg-gradient-to-br from-white via-[#F0FFF4] to-zax-green/10 pt-32 md:pt-0"
+          style={{
+            WebkitMaskImage: typeof window !== 'undefined' && window.innerWidth < 768
+              ? 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
+              : 'none',
+            maskImage: typeof window !== 'undefined' && window.innerWidth < 768
+              ? 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
+              : 'none'
+          }}
+        >
+          <div className="absolute inset-0 z-10 bg-zax-green/[0.02] pointer-events-none" />
+
+          {/* Row 1 */}
+          <div className="flex w-[200%] gap-6 md:gap-12 animate-marquee opacity-90 transition-opacity duration-700 hover:opacity-100">
             {[1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7].map((num, i) => (
-              <img 
-                key={i} 
-                src={`/${num}.png`} 
-                className="h-32 md:h-44 w-auto object-contain " 
-                alt="Zax Product" 
-              />
+              <img key={i} src={`/${num}.png`} className="h-24 md:h-48 w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.08)] transform hover:scale-110 transition-transform duration-500" alt="Zax Product" />
             ))}
           </div>
 
-          {/* Row 2: Images 8-14 (Moving Right) */}
-          <div className="flex w-[200%] gap-12 animate-marquee-reverse">
+          {/* Row 2 */}
+          <div className="flex w-[200%] gap-6 md:gap-12 animate-marquee-reverse opacity-90 transition-opacity duration-700 hover:opacity-100">
             {[8, 9, 10, 11, 12, 13, 14, 8, 9, 10, 11, 12, 13, 14].map((num, i) => (
-              <img 
-                key={i} 
-                src={`/${num}.png`} 
-                className="h-32 md:h-44 w-auto object-contain" 
-                alt="Zax Product" 
-              />
+              <img key={i} src={`/${num}.png`} className="h-24 md:h-48 w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.08)] transform hover:scale-110 transition-transform duration-500" alt="Zax Product" />
             ))}
           </div>
         </div>
 
-       {/* 2. Content Overlay */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
-        
-        {/* Empty div to take up the left column on desktop */}
-        <div className="hidden md:block"></div>
-
-        {/* This container now holds everything on the right side */}
-        <div className="space-y-12">
-
-          {/* 2. Headline (Now underneath the card) */}
-          <div className="drop-shadow-sm">
-            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] text-gray-900 tracking-tighter md:text-right">
-              Reliable <br />
-              <span className="text-zax-green">Supplies</span> <br />
-              & Services
-            </h1>
-          </div>
-          
-          {/* 1. About Brief Card (Now on top) */}
-          <div className="bg-white/80 backdrop-blur-lg p-10 rounded-3xl shadow-2xl border border-gray-100 relative opacity-100">
-            <h2 className="text-2xl font-black mb-4 text-gray-900">About Zax Reliable Services</h2>
-            <p className="text-lg leading-relaxed text-gray-600">
-              We are your dedicated partner for premium food service packaging 
-              and janitorial essentials. From high-quality takeout containers to 
-              durable paper products, we deliver the reliability your business deserves.
+        {/* Floating Badge - Hidden on mobile */}
+        <div className="hidden md:block absolute bottom-10 left-10 z-20 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-zax-green/20">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 rounded-full bg-zax-green animate-pulse" />
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zax-green">
+              Eco-Friendly Essentials
             </p>
           </div>
-
-          
-
         </div>
-      </div>
-      
 
-        <ScrollArrow/>
+        {/* RIGHT SIDE: The Brand Statement */}
+        <div className="w-full md:w-1/2 flex items-start justify-center px-8 md:px-12 lg:px-20 bg-white pt-12 pb-20 md:pt-40 lg:pt-48 md:pb-0">
+          <div className="max-w-2xl space-y-8">
+            <div className="text-left md:text-right mt-8">
+              <h1 className="text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[8rem] font-black leading-[0.85] text-gray-900 tracking-tighter">
+                Reliable<br />
+                <span className="text-zax-green italic font-serif lowercase tracking-normal">supplies</span><br />
+                <span className="text-gray-900">& Services</span>
+              </h1>
+            </div>
+
+            <div className="flex md:justify-end mt-8 md:mt-16">
+              <p className="text-lg lg:text-xl leading-relaxed text-gray-400 font-medium text-left md:text-right max-w-xl">
+                Since 2022, <span className="text-zax-green font-bold">Zax Reliable Services</span> has been Alberta’s premier partner for sustainable hospitality.
+                We provide a growing selection of eco-friendly food and beverage packaging designed to power your business while protecting the planet.
+                As your success evolves, so do our solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <ScrollArrow />
       </section>
 
       {/* --- PRODUCT GRID --- */}
-      <MostPopular/>
-      <Testimonials/>
+      <MostPopular />
+      <Testimonials />
 
-      {/* --- BRANDING & FEATURES SECTION (Clean White Version) --- */}
+      {/* --- BRANDING & FEATURES SECTION --- */}
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -163,7 +162,7 @@ export default function Home() {
       {/* --- FOOTER --- */}
       <footer className="bg-zax-dark text-white pt-2 pb-8">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 items-start">
-          
+
           {/* 1. Contact Info Column with New Icons */}
           <div className="space-y-4 mt-20">
             <div className="flex items-start gap-4">
@@ -208,7 +207,7 @@ export default function Home() {
         {/* --- THE BOTTOM BAR (The part you requested) --- */}
         <div className="mt-16 border-t border-gray-800 pt-8 px-6">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            
+
             {/* Left Side: Copyright and Powered By */}
             <div className="text-left space-y-1">
               <p className="text-sm text-gray-400">
