@@ -5,6 +5,7 @@ import MostPopular from './components/MostPopular';
 import Navbar from './components/Navbar';
 import Testimonials from './components/Testimonials';
 import ScrollArrow from './components/ScrollArrow';
+import Footer from './components/Footer';
 import Link from 'next/link';
 
 export default function Home() {
@@ -14,31 +15,31 @@ export default function Home() {
       {/* --- NAVBAR --- */}
       <Navbar />
 
-      {/* --- SPLIT-SCREEN DYNAMISM HERO --- */}
-      <section className="relative h-auto md:h-[90vh] w-full overflow-hidden bg-white flex flex-col md:flex-row">
 
-        {/* LEFT SIDE: The Inventory Engine */}
-        <div
-          className="relative w-full md:w-1/2 h-[50vh] md:h-full flex flex-col justify-center gap-6 md:gap-12 overflow-hidden md:border-r md:border-gray-100 bg-gradient-to-br from-white via-[#F0FFF4] to-zax-green/10 pt-32 md:pt-0"
+      <section className="relative min-h-[90vh] w-full overflow-hidden bg-white flex flex-col md:flex-row items-stretch">
+
+        {/* LEFT SIDE */}
+        <div 
+          className="relative w-full md:w-1/2 min-h-[50vh] md:min-h-0 flex flex-col justify-center gap-6 md:gap-12 overflow-hidden md:border-r md:border-gray-100 bg-gradient-to-br from-white via-[#F0FFF4] to-zax-green/10 pt-32 md:pt-0"
           style={{
-            WebkitMaskImage: typeof window !== 'undefined' && window.innerWidth < 768
-              ? 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
+            WebkitMaskImage: typeof window !== 'undefined' && window.innerWidth < 768 
+              ? 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' 
               : 'none',
-            maskImage: typeof window !== 'undefined' && window.innerWidth < 768
-              ? 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
+            maskImage: typeof window !== 'undefined' && window.innerWidth < 768 
+              ? 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)' 
               : 'none'
           }}
         >
+          {/* Subtle Glow Overlay */}
           <div className="absolute inset-0 z-10 bg-zax-green/[0.02] pointer-events-none" />
 
-          {/* Row 1 */}
+          {/* Marquee Content - Stays centered within its 50% half */}
           <div className="flex w-[200%] gap-6 md:gap-12 animate-marquee opacity-90 transition-opacity duration-700 hover:opacity-100">
             {[1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7].map((num, i) => (
               <img key={i} src={`/${num}.png`} className="h-24 md:h-48 w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.08)] transform hover:scale-110 transition-transform duration-500" alt="Zax Product" />
             ))}
           </div>
 
-          {/* Row 2 */}
           <div className="flex w-[200%] gap-6 md:gap-12 animate-marquee-reverse opacity-90 transition-opacity duration-700 hover:opacity-100">
             {[8, 9, 10, 11, 12, 13, 14, 8, 9, 10, 11, 12, 13, 14].map((num, i) => (
               <img key={i} src={`/${num}.png`} className="h-24 md:h-48 w-auto object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.08)] transform hover:scale-110 transition-transform duration-500" alt="Zax Product" />
@@ -46,7 +47,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Floating Badge - Hidden on mobile */}
+        {/* Floating Badge */}
         <div className="hidden md:block absolute bottom-10 left-10 z-20 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-zax-green/20">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-zax-green animate-pulse" />
@@ -56,21 +57,22 @@ export default function Home() {
           </div>
         </div>
 
-        {/* RIGHT SIDE: The Brand Statement */}
-        <div className="w-full md:w-1/2 flex items-start justify-center px-8 md:px-12 lg:px-20 bg-white pt-12 pb-20 md:pt-40 lg:pt-48 md:pb-0">
-          <div className="max-w-2xl space-y-8">
-            <div className="text-left md:text-right mt-8">
-              <h1 className="text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[8rem] font-black leading-[0.85] text-gray-900 tracking-tighter">
+        {/* RIGHT SIDE */}
+        <div className="w-full md:w-1/2 flex items-start justify-center px-8 md:px-12 lg:px-20 bg-white pt-12 pb-24 md:pt-28 lg:pt-36 xl:pt-48">
+          <div className="max-w-2xl space-y-6 md:space-y-8">
+            
+            <div className="text-left md:text-right mt-4 md:mt-0">
+              <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] xl:text-[7.5rem] font-black leading-[0.85] text-gray-900 tracking-tighter">
                 Reliable<br />
                 <span className="text-zax-green italic font-serif lowercase tracking-normal">supplies</span><br />
                 <span className="text-gray-900">& Services</span>
               </h1>
             </div>
 
-            <div className="flex md:justify-end mt-8 md:mt-16">
+            <div className="flex md:justify-end mt-6 md:mt-12">
               <p className="text-lg lg:text-xl leading-relaxed text-gray-400 font-medium text-left md:text-right max-w-xl">
-                Since 2022, <span className="text-zax-green font-bold">Zax Reliable Services</span> has been Alberta’s premier partner for sustainable hospitality.
-                We provide a growing selection of eco-friendly food and beverage packaging designed to power your business while protecting the planet.
+                Since 2022, <span className="text-zax-green font-bold">Zax Reliable Services</span> has been Alberta’s premier partner for sustainable hospitality. 
+                We provide a growing selection of eco-friendly food and beverage packaging designed to power your business while protecting the planet. 
                 As your success evolves, so do our solutions.
               </p>
             </div>
@@ -88,7 +90,7 @@ export default function Home() {
       <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* LEFT SIDE: "Why Zax Products?" List */}
+          {/* LEFT SIDE */}
           <div className="space-y-10">
             <div>
               <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">
@@ -103,7 +105,6 @@ export default function Home() {
               {/* Feature 1: Just In Time Services */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-24 h-24 relative">
-                  {/* Replace /icon-jit.png with your actual file name */}
                   <img src="/delivery.png" alt="Just In Time Delivery Icon" className="object-contain w-full h-full" />
                 </div>
                 <div>
@@ -118,7 +119,6 @@ export default function Home() {
               {/* Feature 2: The Zax Model */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-24 h-24 relative">
-                  {/* Replace /icon-model.png with your actual file name */}
                   <img src="/people.png" alt="Zax Model Icon" className="object-contain w-full h-full" />
                 </div>
                 <div>
@@ -132,7 +132,6 @@ export default function Home() {
               {/* Feature 3: Zax Support Services */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0 w-24 h-24 relative">
-                  {/* Replace /icon-support.png with your actual file name */}
                   <img src="/support1.png" alt="Support Services Icon" className="object-contain w-full h-full" />
                 </div>
                 <div>
@@ -147,8 +146,7 @@ export default function Home() {
 
           {/* RIGHT SIDE: Large Circular Logo */}
           <div className="relative flex justify-center lg:justify-end">
-            {/* Circle color matches #BEE7DC from your screenshot */}
-            <div className="w-[380px] h-[380px] md:w-[400px] md:h-[400px] bg-[#BEE7DC] rounded-full flex items-center justify-center shadow-sm relative">
+            <div className="w-72 h-72 sm:w-[380px] sm:h-[380px] lg:w-[450px] lg:h-[450px] bg-[#BEE7DC] rounded-full flex items-center justify-center shadow-sm relative shrink-0 aspect-square">
               <img
                 src="/zax-logo.png"
                 className="w-2/3 h-auto"
@@ -160,71 +158,7 @@ export default function Home() {
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="bg-zax-dark text-white pt-2 pb-8">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12 items-start">
-
-          {/* 1. Contact Info Column with New Icons */}
-          <div className="space-y-4 mt-20">
-            <div className="flex items-start gap-4">
-              <img src="/email.png" alt="Email" className="w-12 h-12 object-contain" />
-              <div>
-                <p className="font-bold text-lg text-zax-green">Email</p>
-                <p className="text-gray-300 hover:text-zax-green transition"><a href="mailto:[EMAIL_ADDRESS]">info@myzax.ca</a></p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <img src="/phone.png" alt="Phone" className="w-12 h-12 object-contain" />
-              <div>
-                <p className="font-bold text-lg text-zax-green">Phone</p>
-                <p className="text-gray-300 hover:text-zax-green transition"><a href="tel:+17803182241">780-318-2241</a></p>
-              </div>
-            </div>
-          </div>
-
-          {/* 2. Middle Logo Column */}
-          <div className="flex justify-center mt-12">
-            <div className="w-[280px] h-[280px] bg-[#BEE7DC] rounded-full flex items-center justify-center">
-              <img src="/zax-logo.png" className="w-2/3 h-auto" alt="Zax Branding" />
-            </div>
-          </div>
-
-          {/* 3. Quick Links & Socials */}
-          <div className="md:pl-12 mt-20">
-            <h4 className="text-zax-green font-bold text-xl mb-6">Quick Links</h4>
-            <ul className="space-y-3 text-gray-300 mb-8">
-              <li><a href="/shop" className="hover:text-zax-green transition">Shop Zax</a></li>
-              <li><a href="/about" className="hover:text-zax-green transition">About Us</a></li>
-              <li><a href="/contact" className="hover:text-zax-green transition">Contact</a></li>
-            </ul>
-            <div className="flex gap-4">
-              {/* Social buttons simplified */}
-              <div className="w-10 h-10 bg-blue-800 rounded flex items-center justify-center font-bold">f</div>
-              <div className="w-10 h-10 bg-blue-600 rounded flex items-center justify-center font-bold">in</div>
-            </div>
-          </div>
-        </div>
-
-        {/* --- THE BOTTOM BAR (The part you requested) --- */}
-        <div className="mt-16 border-t border-gray-800 pt-8 px-6">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-
-            {/* Left Side: Copyright and Powered By */}
-            <div className="text-left space-y-1">
-              <p className="text-sm text-gray-400">
-                Zax Reliable Services Inc. © 2024 All Rights Reserved.
-              </p>
-              <p className="text-sm text-gray-500">
-                Made with ❤️ by STW Insights.
-              </p>
-            </div>
-
-            {/* Right Side: Payment Icons */}
-            <div className="flex items-center gap-3">
-              <img src="/payment.png" alt="Accepted Payments" className="h-6 w-auto opacity-80" />
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

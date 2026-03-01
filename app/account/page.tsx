@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import Navbar from '../components/Navbar';
-import Loading from '../components/Loading'; // Ensure this matches your loading component path
+import Loading from '../components/Loading';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
